@@ -42,7 +42,11 @@ public class Nums {
     }
 
     /**Метод, извлекающий числа из строки выражения */
-    public void findNums(int orderOfSign, String input){
+    public void findNums(int orderOfSign, String input){                     //Проверка на корректно введенный знак выражения
+        if (orderOfSign == 0){
+            System.out.println("Ошибка! Введите корректное выражение!");
+            return;
+        }
         String strFirst = input.substring(0, orderOfSign - 1).trim();    //Извлекает подстроку из строки до знака операции и после
         String strSecond = input.substring(orderOfSign + 1).trim();      //и удаляет пробелы
         first = Integer.parseInt(strFirst);                              //Преобразует строку в Int
