@@ -11,8 +11,10 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
 
-        System.out.println(operation(input));
-        switch (operation(input)){
+        Nums num = Nums.operation(input);
+
+
+        switch (num.getSign()){
             case "+":
 
                 break;
@@ -29,9 +31,7 @@ public class Main {
                 System.out.println("Ошибка!");
         }
 
-        int firstNum = 1;
-        int secondNum = 2;
-        findNums(operation(input),firstNum,secondNum);
-        System.out.println(firstNum + " " + secondNum);
+//        Nums findNums = Nums.findNums();
+
     }
 }
