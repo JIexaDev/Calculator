@@ -9,15 +9,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        String input = scan.nextLine();
+//        Scanner scan = new Scanner(System.in);
+//        String input = scan.nextLine();
 
 //        Nums num = Nums.operation(input);
 //        num.findNums(num.getOrderOfSign(), input);
 //
 //        count(num.getFirst(), num.getSecond(), num.getSign());x
 
-
-        System.out.println(decoder(input));
+        RomanNum romanNum = new RomanNum();
+        System.out.println(romanNum.arabToRoman(99));
     }
 }

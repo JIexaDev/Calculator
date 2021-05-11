@@ -34,4 +34,19 @@ public class RomanNum {
         sum += decodeSingleChar(upInput.charAt(upInput.length() - 1));
         return sum;
     }
+
+    private String[] romanNums = {"C","XC","L","XL","X","IX","V","IV","I"};
+    private int[] arabicNums =   {100, 90,  50,  40, 10,  9,  5,   4,  1};
+
+    /**Метод, возвращающий строку арабских цифр. На вход принимает число */
+    public String arabToRoman(int number){
+        String stringRoman = "";
+        for (int i = 0; i < arabicNums.length; i++){
+            while (number >= arabicNums[i]){
+                stringRoman += romanNums[i];
+                number -= arabicNums[i];
+            }
+        }
+        return stringRoman;
+    }
 }
