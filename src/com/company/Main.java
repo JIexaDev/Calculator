@@ -12,6 +12,10 @@ public class Main {
         String input = scan.nextLine();
 
         Nums num = Nums.operation(input);
+        num.findNums(num.getOrderOfSign(), input);
+
+        System.out.println(num.getFirst());
+        System.out.println(num.getSecond());
 
 
         switch (num.getSign()){
@@ -31,7 +35,7 @@ public class Main {
                 System.out.println("Ошибка!");
         }
 
-//        Nums findNums = Nums.findNums();
+
 
     }
 }
