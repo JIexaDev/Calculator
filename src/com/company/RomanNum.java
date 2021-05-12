@@ -1,6 +1,11 @@
 package com.company;
 
-public class RomanNum {
+public class RomanNum extends Nums {
+
+    private String firstRoman;
+    private String secondRoman;
+
+
 
     /**Метод возвращающий число от символа, указанного римской цифрой */
     private static int decodeSingleChar(char symbol){
@@ -48,5 +53,9 @@ public class RomanNum {
             }
         }
         return stringRoman;
+    }
+
+    public void findArabNums(int orderOfSign, String input){
+
     }
 }

@@ -1,15 +1,10 @@
 package com.company;
 
 public class Nums {
-    private int first;
-    private int second;
-    private String sign;      //Операция(знак) в выражении
-    private int orderOfSign;  //Индекс знака в строке выражения
-
-    private Nums(String sign, int orderOfSign){
-        this.sign = sign;
-        this.orderOfSign = orderOfSign;
-    }
+    private String first;
+    private String second;
+    private String sign;          //Операция(знак) в выражении
+    private int orderOfSign = 0;  //Индекс знака в строке выражения
 
     public String getSign() {
         return sign;
@@ -20,25 +15,22 @@ public class Nums {
     }
 
     public int getFirst() {
-        return first;
+        return Integer.parseInt(first);            //Преобразует строку в число
     }
 
     public int getSecond() {
-        return second;
+        return Integer.parseInt(second);           //Преобразует строку в число
     }
 
     /**Метод, извлекающий знак и его индекс из строки выражения */
-    public static Nums operation(String input){
-        String strSign = null;
-        int intOrderOfSign = 0;
+    public void operation(String input){
         String[] typesOfOperations = {"/","*","+","-"};               //Создаем массив со всеми возможными операциями
         for (String typeOfOperation : typesOfOperations) {            //Проверяем совпадение каждого элемента массива
             if (input.indexOf(typeOfOperation) > 0) {                 //с каждым знаком в строке
-                strSign = typeOfOperation;                            //получаем знак операции
-                intOrderOfSign = input.indexOf(typeOfOperation);      //получаем индекс знака в выражении
+                sign = typeOfOperation;                               //получаем знак операции
+                orderOfSign = input.indexOf(typeOfOperation);         //получаем индекс знака в выражении
             }
         }
-        return new Nums(strSign, intOrderOfSign);
     }
 
     /**Метод, извлекающий числа из строки выражения */
@@ -47,9 +39,7 @@ public class Nums {
             System.out.println("Ошибка! Введите корректное выражение!");
             return;
         }
-        String strFirst = input.substring(0, orderOfSign - 1).trim();    //Извлекает подстроку из строки до знака операции и после
-        String strSecond = input.substring(orderOfSign + 1).trim();      //и удаляет пробелы
-        first = Integer.parseInt(strFirst);                              //Преобразует строку в Int
-        second = Integer.parseInt(strSecond);
+        first = input.substring(0, orderOfSign - 1).trim();    //Извлекает подстроку из строки до знака операции и после
+        second = input.substring(orderOfSign + 1).trim();      //и удаляет пробелы
     }
 }
