@@ -2,9 +2,6 @@ package com.company;
 
 import java.util.Scanner;
 
-import static com.company.Metods.*;
-import static com.company.RomanNum.*;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -12,12 +9,20 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
 
-//        Nums arabNum = new Nums();
-//        arabNum.operation(input);
-//        arabNum.findNums(arabNum.getOrderOfSign(), input);
-//        count(arabNum.getFirst(), arabNum.getSecond(), arabNum.getSign());
+        RomanNum num = new RomanNum();
 
-        TestRoman romanNum = new TestRoman();
-        romanNum.operation(input);
+        num.operation(input);
+        num.findNums(num.getOrderOfSign(),input);
+
+        // Проверка, что первый символ строки - цифра
+        boolean result = input.matches("\\s*\\d{1}.*");
+        if (result){
+            num.count(num.getArabFirst(), num.getArabSecond(), num.getSign());
+            System.out.println(num.getArabSumm());
+        } else {
+            num.count(num.decoder(num.first), num.decoder(num.second), num.getSign());
+            System.out.println(num.arabToRoman(num.getArabSumm()));
+        }
+
     }
 }

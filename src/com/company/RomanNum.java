@@ -2,13 +2,8 @@ package com.company;
 
 public class RomanNum extends Nums {
 
-    private String firstRoman;
-    private String secondRoman;
-
-
-
     /**Метод возвращающий число от символа, указанного римской цифрой */
-    private static int decodeSingleChar(char symbol){
+    private int decodeSingleChar(char symbol){
         switch (symbol){
             case 'C':
                 return 100;
@@ -26,7 +21,7 @@ public class RomanNum extends Nums {
     }
 
     /**Метод, возвращающий число из введенного римского */
-    public static int decoder(String input){
+    public int decoder(String input){
         int sum = 0;
         String upInput = input.toUpperCase();
         for (int i = 0; i < (upInput.length() - 1); i++){
@@ -55,7 +50,4 @@ public class RomanNum extends Nums {
         return stringRoman;
     }
 
-    public void findArabNums(int orderOfSign, String input){
-
-    }
 }
