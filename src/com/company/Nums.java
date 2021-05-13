@@ -15,35 +15,9 @@ public class Nums {
         return orderOfSign;
     }
 
-    /**Получает из String с числом int число */
-    public int getArabFirst() {
-        int intFirst = 0;
-        try {
-            intFirst = Integer.parseInt(first);
-        }
-        catch (Exception ex){
-            System.out.println("Ошибка! Введите корректное выражение!");
-            ex.printStackTrace();
-            System.exit(0);
-        }
-        return intFirst;
+    public int getArabSumm() {
+        return arabSumm;
     }
-
-    /**Получает из String с числом int число */
-    public int getArabSecond() {
-        int intSecond = 0;
-        try {
-            intSecond = Integer.parseInt(second);
-        }
-        catch (Exception ex){
-            System.out.println("Ошибка! Введите корректное выражение!");
-            ex.printStackTrace();
-            System.exit(0);
-        }
-        return intSecond;
-    }
-
-    public int getArabSumm() { return arabSumm; }
 
     public String getFirst(){
         return first;
@@ -51,6 +25,42 @@ public class Nums {
 
     public String getSecond() {
         return second;
+    }
+
+    /**Получает из String с числом - int число и проверяет на корректность ввода */
+    public int getArabFirst() {
+        int intFirst = 0;
+        try {
+            intFirst = Integer.parseInt(first);
+            if (intFirst < 1 || intFirst > 10){
+                error();
+            }
+        }
+        catch (Exception ex){
+            error();
+        }
+        return intFirst;
+    }
+
+    /**Получает из String с числом - int число и проверяет на корректность ввода */
+    public int getArabSecond() {
+        int intSecond = 0;
+        try {
+            intSecond = Integer.parseInt(second);
+            if (intSecond < 1 || intSecond > 10){
+                error();
+            }
+        }
+        catch (Exception ex){
+            error();
+        }
+        return intSecond;
+    }
+
+    /**Вывод сообщения об ошибке и завершение программы */
+    private void error(){
+        System.out.println("Ошибка! Введите корректное выражение!");
+        System.exit(0);
     }
 
     /**Метод, извлекающий знак и его индекс из строки выражения */
@@ -62,14 +72,14 @@ public class Nums {
                 orderOfSign = input.indexOf(typeOfOperation);         //получаем индекс знака в выражении
             }
         }
+        if (orderOfSign == 0){                                        //Проверка на корректно введенный знак выражения
+            System.out.println("Ошибка! Введите корректное выражение!");
+            System.exit(0);
+        }
     }
 
     /**Метод, извлекающий числа из строки выражения */
-    public void findNums(int orderOfSign, String input){               //Проверка на корректно введенный знак выражения
-        if (orderOfSign == 0){
-            System.out.println("Ошибка! Введите корректное выражение!");
-            return;
-        }
+    public void findNums(int orderOfSign, String input){
         first = input.substring(0, orderOfSign).trim();        //Извлекает подстроку из строки до знака операции и после
         second = input.substring(orderOfSign + 1).trim();      //и удаляет пробелы
     }

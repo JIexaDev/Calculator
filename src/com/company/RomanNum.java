@@ -13,6 +13,11 @@ public class RomanNum extends Nums {
                output = i + 1;
            }
         }
+        //Проверка на корректность введенных римских чисел
+        if (output == 0){
+            System.out.println("Ошибка! Введите корректное выражение!");
+            System.exit(0);
+        }
         return output;
     }
 
@@ -27,6 +32,10 @@ public class RomanNum extends Nums {
                 stringRoman += romanNums[i];
                 number -= arabicNums[i];
             }
+        }
+        if (stringRoman.equals("")){
+            System.out.println("Римские числа бывают только положительными :)");
+            System.exit(0);
         }
         return stringRoman;
     }
