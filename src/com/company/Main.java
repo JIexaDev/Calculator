@@ -20,7 +20,7 @@ public class Main {
             num.count(num.getArabFirst(), num.getArabSecond(), num.getSign());
             System.out.println(num.getArabSumm());
         } else {
-            num.count(num.decoder(num.first), num.decoder(num.second), num.getSign());
+            num.count(num.romanToArab(num.first), num.romanToArab(num.second), num.getSign());
             System.out.println(num.arabToRoman(num.getArabSumm()));
         }
 

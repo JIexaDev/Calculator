@@ -2,37 +2,18 @@ package com.company;
 
 public class RomanNum extends Nums {
 
-    /**Метод возвращающий число от символа, указанного римской цифрой */
-    private int decodeSingleChar(char symbol){
-        switch (symbol){
-            case 'C':
-                return 100;
-            case 'L':
-                return 50;
-            case 'X':
-                return 10;
-            case 'V':
-                return 5;
-            case 'I':
-                return 1;
-            default:
-                return 0;
-        }
-    }
+    private String[] inputRomanString = {"I","II","III","IV","V","VI","VII","VIII","IX","X"};
 
     /**Метод, возвращающий число из введенного римского */
-    public int decoder(String input){
-        int sum = 0;
+    public int romanToArab(String input){
+        int output = 0;
         String upInput = input.toUpperCase();
-        for (int i = 0; i < (upInput.length() - 1); i++){
-            if (decodeSingleChar(upInput.charAt(i)) < decodeSingleChar(upInput.charAt(i+1))){
-                sum -= decodeSingleChar(upInput.charAt(i));
-            } else {
-                sum += decodeSingleChar(upInput.charAt(i));
-            }
+        for (int i = 0; i < inputRomanString.length; i++) {
+           if (upInput.equals(inputRomanString[i])){
+               output = i + 1;
+           }
         }
-        sum += decodeSingleChar(upInput.charAt(upInput.length() - 1));
-        return sum;
+        return output;
     }
 
     private String[] romanNums = {"C","XC","L","XL","X","IX","V","IV","I"};

@@ -15,15 +15,43 @@ public class Nums {
         return orderOfSign;
     }
 
+    /**Получает из String с числом int число */
     public int getArabFirst() {
-        return Integer.parseInt(first);            //Преобразует строку в число
+        int intFirst = 0;
+        try {
+            intFirst = Integer.parseInt(first);
+        }
+        catch (Exception ex){
+            System.out.println("Ошибка! Введите корректное выражение!");
+            ex.printStackTrace();
+            System.exit(0);
+        }
+        return intFirst;
     }
 
+    /**Получает из String с числом int число */
     public int getArabSecond() {
-        return Integer.parseInt(second);           //Преобразует строку в число
+        int intSecond = 0;
+        try {
+            intSecond = Integer.parseInt(second);
+        }
+        catch (Exception ex){
+            System.out.println("Ошибка! Введите корректное выражение!");
+            ex.printStackTrace();
+            System.exit(0);
+        }
+        return intSecond;
     }
 
     public int getArabSumm() { return arabSumm; }
+
+    public String getFirst(){
+        return first;
+    }
+
+    public String getSecond() {
+        return second;
+    }
 
     /**Метод, извлекающий знак и его индекс из строки выражения */
     public void operation(String input){
@@ -42,7 +70,7 @@ public class Nums {
             System.out.println("Ошибка! Введите корректное выражение!");
             return;
         }
-        first = input.substring(0, orderOfSign - 1).trim();    //Извлекает подстроку из строки до знака операции и после
+        first = input.substring(0, orderOfSign).trim();        //Извлекает подстроку из строки до знака операции и после
         second = input.substring(orderOfSign + 1).trim();      //и удаляет пробелы
     }
 
